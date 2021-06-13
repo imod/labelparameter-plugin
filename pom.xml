@@ -1,20 +1,113 @@
-
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    
-    <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>org.jenkins-ci.plugins</groupId>
-        <artifactId>plugin</artifactId>
-        <version>1.414-SNAPSHOT</version><!-- which version of Hudson is this plugin built against? -->
-    
-    </parent>
+	<modelVersion>4.0.0</modelVersion>
 
-    <artifactId>LabelParameter</artifactId>
-    <version>1.0-SNAPSHOT</version>
+	<parent>
+		<groupId>org.jenkins-ci.plugins</groupId>
+		<artifactId>plugin</artifactId>
+                <version>4.19</version>
+                <relativePath />
+	</parent>
 
-    <packaging>hpi</packaging>
+	<artifactId>nodelabelparameter</artifactId>
+	<version>${revision}${changelist}</version>
 
-    <name>MyNewPlugin</name>
+	<packaging>hpi</packaging>
 
-</project>
+	<name>Node and Label parameter plugin</name>
+	<description>The node and label parameter plugin allows to dynamically select the node on which a job should be executed.</description>
+
+	<url>https://github.com/jenkinsci/${project.artifactId}-plugin</url>
+	<scm>
+		<connection>scm:git:git://github.com/${gitHubRepo}.git</connection>
+		<developerConnection>scm:git:git@github.com:${gitHubRepo}.git</developerConnection>
+		<url>https://github.com/${gitHubRepo}</url>
+	  <tag>${scmTag}</tag>
+  </scm>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.javadoc.skip>true</maven.javadoc.skip>
+                <revision>1.8.2</revision>
+                <changelist>-SNAPSHOT</changelist>
+                <jenkins.version>2.263.1</jenkins.version>
+                <java.level>8</java.level>
+                <gitHubRepo>jenkinsci/${project.artifactId}-plugin</gitHubRepo>
+	</properties>
+	<developers>
+		<developer>
+			<id>imod</id>
+			<name>Dominik Bartholdi</name>
+			<email />
+		</developer>
+                <developer>
+                        <id>MarkEWaite</id>
+                        <name>Mark Waite</name>
+                        <email>mark.earl.waite@gmail.com</email>
+                </developer>
+	</developers>
+	<licenses>
+    		<license>
+                        <name>MIT License</name>
+                        <url>https://opensource.org/licenses/MIT</url>
+      			<distribution>repo</distribution>
+    		</license>
+  	</licenses>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.jenkins-ci.plugins</groupId>
+			<artifactId>parameterized-trigger</artifactId>
+                        <version>2.36</version>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.jenkins-ci.plugins</groupId>
+			<artifactId>token-macro</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>org.jenkins-ci.plugins</groupId>
+		    <artifactId>jquery</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.jenkins-ci.main</groupId>
+			<artifactId>jenkins-test-harness-tools</artifactId>
+                        <version>2.2</version>
+			<scope>test</scope>
+		</dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>3.19.0</version>
+            <scope>test</scope>
+        </dependency>
+	</dependencies>
+
+	<repositories>
+		<repository>
+			<id>repo.jenkins-ci.org</id>
+			<url>https://repo.jenkins-ci.org/public/</url>
+		</repository>
+	</repositories>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>repo.jenkins-ci.org</id>
+			<url>https://repo.jenkins-ci.org/public/</url>
+		</pluginRepository>
+	</pluginRepositories>
+
+        <dependencyManagement>
+                <dependencies>
+                        <dependency>
+                                <groupId>io.jenkins.tools.bom</groupId>
+                                <artifactId>bom-2.263.x</artifactId>
+                                <version>867.v1fa45e78abe9</version>
+                                <type>pom</type>
+                                <scope>import</scope>
+                        </dependency>
+                </dependencies>
+        </dependencyManagement>
+</project>  
+  
+

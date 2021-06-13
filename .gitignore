@@ -1,1 +1,6 @@
 /work
+.project
+.classpath
+.settings
+target
+.idea
